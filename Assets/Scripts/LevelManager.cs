@@ -2,18 +2,8 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [System.Serializable]
-    struct QuestionData
-    {
-        public Sprite hintSprite;
-        public string level;
-        public string question;
-
-        public string[] answers;
-        public bool[] isCorrect;
-    }
-
-    [SerializeField] QuestionData[] questions;
+    [SerializeField] PlayerProgressSO _playerProgress;
+    [SerializeField] LevelPackSO _levelPack;
     [SerializeField] UI_Question _questionUI;
     [SerializeField] UI_AnswerPoint[] _answerUI;
 
@@ -21,6 +11,11 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        if (!_playerProgress.LoadProgress())
+        {
+            _playerProgress.SaveProgress();
+        }
+
         NextLevel();
     }
 
@@ -28,19 +23,20 @@ public class LevelManager : MonoBehaviour
     {
         _questionIndex++;
 
-        if (_questionIndex >= questions.Length)
+        if (_questionIndex >= _levelPack.QuestionCount)
         {
             _questionIndex = 0;
         }
 
-        QuestionData question = questions[_questionIndex];
+        LevelQuestionSO question = _levelPack.GetQuestion(_questionIndex);
 
         _questionUI.SetQuestion(question.level, question.question, question.hintSprite);
 
         for (int i = 0; i < _answerUI.Length; i++)
         {
-            UI_AnswerPoint answer = _answerUI[i];
-            answer.SetAnswer(question.answers[i], question.isCorrect[i]);
+            UI_AnswerPoint point = _answerUI[i];
+            LevelQuestionSO.Answers answer = question.answers[i];
+            point.SetAnswer(answer.answerText, answer.isCorrect);
         }
     }
 }

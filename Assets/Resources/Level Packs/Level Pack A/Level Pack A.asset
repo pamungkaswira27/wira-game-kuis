@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f4d41e086961b4eaa4998b91a9eab7, type: 3}
+  m_Name: Level Pack A
+  m_EditorClassIdentifier: 
+  _questions:
+  - {fileID: 11400000, guid: 8833e3fa6e2ada94ca120d68ab1e1fbe, type: 2}
+  - {fileID: 11400000, guid: 7e7fe3adab3da4a44a07fb1f8163d237, type: 2}
+  - {fileID: 11400000, guid: bc080c173d7d6124e97c1411d907bbe7, type: 2}
+  - {fileID: 11400000, guid: d15d2ac4db13dc047b25662cc38a346c, type: 2}
+  - {fileID: 11400000, guid: f3016e136e7abb1498acad2579fddde0, type: 2}

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dc00cf140ccc847960af8524e6c0df, type: 3}
+  m_Name: Question 4
+  m_EditorClassIdentifier: 
+  hintSprite: {fileID: 21300000, guid: e13981db2e270914d90292bf597205b5, type: 3}
+  level: Level 4
+  question: Warna Dari Mawar ?
+  answers:
+  - answerText: Merah
+    isCorrect: 1
+  - answerText: Biru
+    isCorrect: 0
+  - answerText: Hijau
+    isCorrect: 0
+  - answerText: Kuning
+    isCorrect: 0

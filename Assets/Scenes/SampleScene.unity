@@ -619,34 +619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a6b7b9b2d59734f9b0b95b474a7bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questions:
-  - hintSprite: {fileID: 21300000, guid: 10191773d0db35e4b9b84300e520832d, type: 3}
-    level: Level 1
-    question: Warna dari Mawar ?
-    answers:
-    - Merah
-    - Kuning
-    - Hijau
-    - Biru
-    isCorrect: 01000000
-  - hintSprite: {fileID: 21300000, guid: 1ef8a31f70c0737449c01ac318510323, type: 3}
-    level: Level 2
-    question: Warna dari Stroberi ?
-    answers:
-    - Putih
-    - Pink
-    - Merah
-    - Ungu
-    isCorrect: 00000100
-  - hintSprite: {fileID: 21300000, guid: ec1dea7f2cf74404c94d739076a6b9c9, type: 3}
-    level: Level 3
-    question: Warna dari Langit ?
-    answers:
-    - Hitam
-    - Abu-Abu
-    - Biru
-    - Putih
-    isCorrect: 00000100
+  _playerProgress: {fileID: 11400000, guid: 4090c4e0a1ec2fe4c9bed5fabee92929, type: 2}
+  _levelPack: {fileID: 11400000, guid: d338dba8ef192a64a9f52664f25486ce, type: 2}
   _questionUI: {fileID: 1310026105}
   _answerUI:
   - {fileID: 1290352111}
