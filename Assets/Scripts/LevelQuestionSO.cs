@@ -13,6 +13,7 @@ public class LevelQuestionSO : ScriptableObject
     public Sprite hintSprite;
     public string level;
     public string question;
+    public int levelPackIndex;
 
     public Answers[] answers;
 }

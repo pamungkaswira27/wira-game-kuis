@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_Timer : MonoBehaviour
 {
+    public static event Action OnTimeOver;
+
     [SerializeField] Slider _timerBar;
-    [SerializeField] UI_MessageLevel _messageUI;
+    //[SerializeField] UI_MessageLevel _messageUI;
 
     [SerializeField] float _answerTime;
     float _answerTimeRemaining;
@@ -34,8 +37,10 @@ public class UI_Timer : MonoBehaviour
 
         if (_answerTimeRemaining < 0f)
         {
-            _messageUI.Message = "Waktu Habis";
-            _messageUI.gameObject.SetActive(true);
+            //_messageUI.Message = "Waktu Habis";
+            //_messageUI.gameObject.SetActive(true);
+
+            OnTimeOver?.Invoke();
             _isAnswering = false;
             return;
         }
