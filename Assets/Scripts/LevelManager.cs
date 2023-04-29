@@ -9,20 +9,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] UI_AnswerPoint[] _answerUI;
     [SerializeField] GameSceneManager _gameSceneManager;
     [SerializeField] string _levelSelectSceneName;
+    [SerializeField] SoundSpawner _soundSpawner;
+    [SerializeField] AudioClip _winClip;
+    [SerializeField] AudioClip _loseClip;
 
     int _questionIndex = -1;
 
     void Start()
     {
-        //if (!_playerProgress.LoadProgress())
-        //{
-        //    _playerProgress.SaveProgress();
-        //}
-
         _levelPack = _initialGameplayData.levelPack;
         _questionIndex = _initialGameplayData.levelIndex - 1;
 
         NextLevel();
+        AudioManager.instance.PlayBGM(1);
 
         UI_AnswerPoint.OnAnswerQuestion += UI_AnswerPoint_OnAnswerQuestion;
     }
@@ -39,9 +38,19 @@ public class LevelManager : MonoBehaviour
 
     private void UI_AnswerPoint_OnAnswerQuestion(string answerText, bool isCorrect)
     {
-        if (isCorrect)
+        _soundSpawner.PlaySoundEffect(isCorrect ? _winClip : _loseClip);
+
+        if (!isCorrect) return;
+
+        var levelPackName = _initialGameplayData.levelPack.name;
+        var lastUnlockedLevel = _playerProgress.dataProgress.levelProgress[levelPackName];
+
+        if (_questionIndex + 2 > lastUnlockedLevel)
         {
             _playerProgress.dataProgress.coin += 20;
+
+            _playerProgress.dataProgress.levelProgress[levelPackName] = _questionIndex + 2;
+            _playerProgress.SaveProgress();
         }
     }
 

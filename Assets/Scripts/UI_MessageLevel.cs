@@ -6,6 +6,7 @@ public class UI_MessageLevel : MonoBehaviour
     [SerializeField] GameObject _winOption;
     [SerializeField] GameObject _loseOption;
     [SerializeField] TextMeshProUGUI _messageText;
+    [SerializeField] Animator _animator;
 
     public string Message
     {
@@ -45,6 +46,8 @@ public class UI_MessageLevel : MonoBehaviour
             _winOption.SetActive(false);
             _loseOption.SetActive(true);
         }
+
+        _animator.SetBool("IsWin", isCorrect);
     }
 
     private void UI_Timer_OnTimeOver()

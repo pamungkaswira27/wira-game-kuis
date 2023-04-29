@@ -18,3 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd18084ca3ba46c489d7b2cb760e3bd6, type: 2}
   - {fileID: 11400000, guid: a429a9aa6a6837342ac5eaa0bfe144b5, type: 2}
   - {fileID: 11400000, guid: ee62bf7603d7601438f2a3b2e99c53d0, type: 2}
+  _price: 100

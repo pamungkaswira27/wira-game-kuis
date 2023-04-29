@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 5424088346562183541}
   - component: {fileID: 5424088346562183540}
   - component: {fileID: 977710937447200370}
+  - component: {fileID: 7356476452239972851}
   m_Layer: 5
   m_Name: Level Button
   m_TagString: Untagged
@@ -257,7 +258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5424088346562183541}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7356476452239972851}
+        m_TargetAssemblyTypeName: SoundSpawner, Assembly-CSharp
+        m_MethodName: PlaySoundEffect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 6dd3a5e2468d70948a5ab2f44dd6a738, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &977710937447200370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,3 +286,15 @@ MonoBehaviour:
   _button: {fileID: 5424088346562183540}
   _levelName: {fileID: 5424088345331787673}
   _levelQuestion: {fileID: 11400000, guid: 8833e3fa6e2ada94ca120d68ab1e1fbe, type: 2}
+--- !u!114 &7356476452239972851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424088346562183542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1672362807a30554b9659821d06db36f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

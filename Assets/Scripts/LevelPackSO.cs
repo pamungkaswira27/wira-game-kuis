@@ -4,8 +4,10 @@ using UnityEngine;
 public class LevelPackSO : ScriptableObject
 {
     [SerializeField] LevelQuestionSO[] _questions;
+    [SerializeField] int _price;
 
     public int QuestionCount => _questions.Length;
+    public int Price => _price;
 
     public LevelQuestionSO GetQuestion(int index)
     {

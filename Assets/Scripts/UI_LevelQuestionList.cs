@@ -3,6 +3,7 @@ using UnityEngine;
 public class UI_LevelQuestionList : MonoBehaviour
 {
     [SerializeField] InitialGameplayData _initialGameplayData;
+    [SerializeField] PlayerProgressSO _playerProgress;
     [SerializeField] UI_LevelButton _levelButton;
     [SerializeField] RectTransform _content;
     [SerializeField] LevelPackSO _levelPack;
@@ -29,6 +30,8 @@ public class UI_LevelQuestionList : MonoBehaviour
     {
         ClearContent();
 
+        var lastUnlockedLevel = _playerProgress.dataProgress.levelProgress[levelPack.name] - 1;
+
         _levelPack = levelPack;
 
         for (int i = 0; i < levelPack.QuestionCount; i++)
@@ -37,6 +40,11 @@ public class UI_LevelQuestionList : MonoBehaviour
             button.SetLevelQuestion(levelPack.GetQuestion(i), i);
             button.transform.SetParent(_content);
             button.transform.localScale = Vector3.one;
+
+            if (i > lastUnlockedLevel)
+            {
+                button.ButtonInteraction = false;
+            }
         }
     }
 

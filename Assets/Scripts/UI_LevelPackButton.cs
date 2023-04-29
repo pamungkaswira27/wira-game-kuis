@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class UI_LevelPackButton : MonoBehaviour
 {
-    public static event Action<LevelPackSO> OnLevelPackButtonClicked;
+    public static event Action<UI_LevelPackButton, LevelPackSO, bool> OnLevelPackButtonClicked;
 
     [SerializeField] Button _button;
     [SerializeField] TextMeshProUGUI _levelPackName;
     [SerializeField] LevelPackSO _levelPack;
+    [SerializeField] TextMeshProUGUI _lockedText;
+    [SerializeField] TextMeshProUGUI _priceText;
+    [SerializeField] bool _isLocked;
 
     void Start()
     {
@@ -32,8 +35,23 @@ public class UI_LevelPackButton : MonoBehaviour
         _levelPackName.text = _levelPack.name;
     }
 
+    public void LockLevelPack()
+    {
+        _isLocked = true;
+        _lockedText.gameObject.SetActive(true);
+        _priceText.gameObject.SetActive(true);
+        _priceText.text = _levelPack.Price.ToString();
+    }
+
+    public void UnlockLevelPack()
+    {
+        _isLocked = false;
+        _lockedText.gameObject.SetActive(false);
+        _priceText.gameObject.SetActive(false);
+    }
+
     void OnLevelPackClicked()
     {
-        OnLevelPackButtonClicked?.Invoke(_levelPack);
+        OnLevelPackButtonClicked?.Invoke(this, _levelPack, _isLocked);
     }
 }

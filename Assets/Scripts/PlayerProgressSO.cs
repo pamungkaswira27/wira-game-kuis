@@ -14,22 +14,35 @@ public class PlayerProgressSO : ScriptableObject
     }
 
     [SerializeField] string _fileName;
+    [SerializeField] string _startingLevelPackName;
 
     public MainData dataProgress = new MainData();
 
     public void SaveProgress()
     {
-        dataProgress.coin = 300;
+        //dataProgress.coin = 300;
+
+        //if (dataProgress.levelProgress == null)
+        //{
+        //    dataProgress.levelProgress = new();
+        //}
+
+        //dataProgress.levelProgress.Add("Level Pack A", 3);
+        //dataProgress.levelProgress.Add("Level Pack B", 1);
 
         if (dataProgress.levelProgress == null)
         {
             dataProgress.levelProgress = new();
+            dataProgress.coin = 0;
+            dataProgress.levelProgress.Add(_startingLevelPackName, 1);
         }
 
-        dataProgress.levelProgress.Add("Level Pack A", 3);
-        dataProgress.levelProgress.Add("Level Pack B", 1);
-
+#if UNITY_EDITOR
         string directory = Application.dataPath + "/Temp";
+#elif (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+        string directory = Application.persistentDataPath + "/LocalProgress";
+#endif
+
         string filePath = directory + "/" + _fileName;
 
         if (!Directory.Exists(directory))
@@ -48,21 +61,21 @@ public class PlayerProgressSO : ScriptableObject
 
         fileStream.Flush();
 
-        //BinaryFormatter formatter = new BinaryFormatter();
+        BinaryFormatter formatter = new BinaryFormatter();
 
-        //formatter.Serialize(fileStream, dataProgress);
+        formatter.Serialize(fileStream, dataProgress);
 
-        BinaryWriter writer = new BinaryWriter(fileStream);
+        //BinaryWriter writer = new BinaryWriter(fileStream);
 
-        writer.Write(dataProgress.coin);
+        //writer.Write(dataProgress.coin);
 
-        foreach (var progress in dataProgress.levelProgress)
-        {
-            writer.Write(progress.Key);
-            writer.Write(progress.Value);
-        }
+        //foreach (var progress in dataProgress.levelProgress)
+        //{
+        //    writer.Write(progress.Key);
+        //    writer.Write(progress.Value);
+        //}
 
-        writer.Dispose();
+        // writer.Dispose();
         fileStream.Dispose();
 
         //string content = $"{dataProgress.coin}\n";

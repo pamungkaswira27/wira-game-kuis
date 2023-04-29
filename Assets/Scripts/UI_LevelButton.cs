@@ -11,6 +11,12 @@ public class UI_LevelButton : MonoBehaviour
     [SerializeField] TextMeshProUGUI _levelName;
     [SerializeField] LevelQuestionSO _levelQuestion;
 
+    public bool ButtonInteraction
+    {
+        get => _button.interactable;
+        set => _button.interactable = value;
+    }
+
     void Start()
     {
         if (_levelQuestion != null)
